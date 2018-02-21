@@ -5,15 +5,15 @@ end
 # helper methods, cause we don't like conditional statements
 function on-error
 	set res $status
-	if res -ne 0
-		$argv
+	if test res -ne 0
+		eval $argv
 	end
 	return res
 end
 function on-success
 	set res $status
-	if res -eq 0
-		$argv
+	if test res -eq 0
+		eval $argv
 	end
 	return res
 end
@@ -27,14 +27,14 @@ end
 function tmx --description 'Creates/Resurrects tmux sessions'
 	# take over given arg or default back to main session
 	set argc (count $argv)
-	if $argc -eq 0
+	if test $argc -eq 0
 		set session main
 	else
 		set session $argv[1]
 	end
 	# check if user is currently in a tmux session
 	if test -n $TMUX
-		if $argc -eq 0
+		if test $argc -eq 0
 			tmux list-sessions | awk '{sub(":","") ; print "- " $argv[1] " " $argv[1]1}' 
 		else
 			__tmux_has_session $session
