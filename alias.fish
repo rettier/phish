@@ -26,6 +26,11 @@ alias playsudo='ansible-playbook --extra-vars 'ansible_ssh_user=root''
 alias kaf='kubectl apply -f'
 alias k='kubectl'
 
+# kubernetes helpers
+alias kname='kubectl config set-context (kubectl config current-context) --namespace '
+alias kaf='kubectl apply -f'
+alias k='kubectl'
+
 # add os depending alias file
 switch (uname)
 case Darwin
@@ -33,10 +38,3 @@ case Darwin
 case '*'
 	source $path/os/linux/alias.fish
 end
-
-# add user specified alias
-if test -e ~/.alias.fish
-	source ~/.alias.fish
-end
-
-
