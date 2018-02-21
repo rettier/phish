@@ -7,3 +7,4 @@
 
 source $path/alias.fish
 source $path/environment.fish
+source $path/functions.fish
