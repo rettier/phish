@@ -22,10 +22,6 @@ alias play='ansible-playbook'
 alias playask='ansible-playbook --ask-become-pass'
 alias playsudo='ansible-playbook --extra-vars 'ansible_ssh_user=root''
 
-# kubernetes
-alias kaf='kubectl apply -f'
-alias k='kubectl'
-
 # kubernetes helpers
 alias kname='kubectl config set-context (kubectl config current-context) --namespace '
 alias kaf='kubectl apply -f'
