@@ -1,7 +1,3 @@
-function cd --description 'List directory content on cd'
-	builtin cd $argv; and ll
-end
-
 # helper methods, cause we don't like conditional statements
 function on-error
 	set res $status
