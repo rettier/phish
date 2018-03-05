@@ -8,6 +8,10 @@ alias meh='echo "¯\\_(ツ)_/¯"'
 alias pubip='curl ipecho.net/plain; and echo'
 alias htf='fish_logo; and echo "       All hail the Fish"'
 
+# docker
+alias d='docker'
+alias dcud='docker-compose up -d'
+
 # json
 alias j='python -c "import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=2)" | cat'
 alias pj='python -c "import sys, ast, json; print json.dumps(ast.literal_eval(sys.stdin.read().strip()))" | j'
