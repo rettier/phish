@@ -1,0 +1,8 @@
+#!/bin/bash
+
+NAME=$(wmctrl -lx | grep spotify.Spotify | tr -s "[:space:]" | cut -d" " -f 5-)
+if [ -z "$NAME" ] ; then
+  spotify&  
+else
+  wmctrl -a "$NAME"
+fi

@@ -1,0 +1,7 @@
+#!/bin/bash
+if which mate-terminal >/dev/null ; then
+    wmctrl -i -a $(wmctrl -l -x | grep -i mate-terminal.Mate-terminal | cut -d" " -f1)
+    if [[ "$?" -ne 0 ]] ; then
+        mate-terminal&
+    fi
+fi
