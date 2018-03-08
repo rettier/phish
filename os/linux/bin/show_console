@@ -1,7 +1,16 @@
 #!/bin/bash
 if which mate-terminal >/dev/null ; then
-    wmctrl -i -a $(wmctrl -l -x | grep -i mate-terminal.Mate-terminal | cut -d" " -f1)
+    wmctrl -i -a $(wmctrl -l -x | grep mate-terminal.Mate-terminal | head -n1 | cut -d" " -f1)
     if [[ "$?" -ne 0 ]] ; then
         mate-terminal&
     fi
 fi
+
+if which gnome-terminal >/dev/null ; then
+    wmctrl -i -a $(wmctrl -l -x | grep gnome-terminal-server.Gnome-terminal | head -n1 | cut -d" " -f1)
+    if [[ "$?" -ne 0 ]] ; then
+        gnome-terminal&
+    fi
+fi
+
+ 
