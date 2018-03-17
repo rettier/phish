@@ -10,6 +10,7 @@ alias htf='fish_logo; and echo "       All hail the Fish"'
 
 # docker
 alias d='docker'
+alias dc='docker-compose'
 alias dcud='docker-compose up -d'
 
 # json
