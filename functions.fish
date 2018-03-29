@@ -1,3 +1,8 @@
+function zopen
+    open (z -e $argv)
+end
+
+
 # helper methods, cause we don't like conditional statements
 function on-error
 	set res $status
