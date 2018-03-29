@@ -1,7 +1,7 @@
 alias ..='cd ..'
 alias ccd='builtin cd'
 alias mkdir='mkdir -p'
-alias nano='vim'
+abbr -a nano vim
 alias cat='/usr/bin/ccat'
 alias ccat='command cat'
 alias meh='echo "¯\\_(ツ)_/¯"'
@@ -9,9 +9,9 @@ alias pubip='curl ipecho.net/plain; and echo'
 alias htf='fish_logo; and echo "       All hail the Fish"'
 
 # docker
-alias d='docker'
-alias dc='docker-compose'
-alias dcud='docker-compose up -d'
+abbr -a d docker
+abbr -a dc docker-compose
+abbr -a dcud docker-compose up -d
 
 # json
 alias j='python -c "import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=2)" | cat'
@@ -29,8 +29,8 @@ alias playsudo='ansible-playbook --extra-vars 'ansible_ssh_user=root''
 
 # kubernetes helpers
 alias kname='kubectl config set-context (kubectl config current-context) --namespace '
-alias kaf='kubectl apply -f'
-alias k='kubectl'
+abbr -a kaf kubectl apply -f
+abbr -a k   kubectl
 
 # add os depending alias file
 switch (uname)
