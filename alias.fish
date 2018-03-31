@@ -7,7 +7,6 @@ alias ccat='command cat'
 alias meh='echo "¯\\_(ツ)_/¯"'
 alias pubip='curl ipecho.net/plain; and echo'
 alias htf='fish_logo; and echo "       All hail the Fish"'
-alias sudo="sudo -s"
 alias make="make -j(nproc --all)"
 
 # git
