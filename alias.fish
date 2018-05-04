@@ -8,6 +8,7 @@ alias meh='echo "¯\\_(ツ)_/¯"'
 alias pubip='curl ipecho.net/plain; and echo'
 alias htf='fish_logo; and echo "       All hail the Fish"'
 alias make="make -j(nproc --all)"
+abbr -a unixc unix \(c\)
 
 # git
 abbr -a gau git add -u
