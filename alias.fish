@@ -12,6 +12,7 @@ abbr -a unixc unix \(c\)
 
 # git
 abbr -a gau git add -u
+alias gpristine='git reset --hard; and git clean -dfx'
 
 # docker
 abbr -a d docker
