@@ -19,3 +19,6 @@ function cf --description 'Copies full file path to clipboard'
 	readlink -f $argv | cc
 end
 
+function open --description 'open any file/folder with xdg open and mute stdout/stderr'
+    xdg-open $argv 2>&1 >/dev/null
+end

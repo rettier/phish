@@ -36,6 +36,7 @@ alias playsudo='ansible-playbook --extra-vars 'ansible_ssh_user=root''
 alias kname='kubectl config set-context (kubectl config current-context) --namespace '
 abbr -a kaf kubectl apply -f
 abbr -a k   kubectl
+abbr -a kdp   kubectl delete pod
 
 # add os depending alias file
 switch (uname)

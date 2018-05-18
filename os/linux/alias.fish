@@ -7,5 +7,3 @@ abbr -a apls sudo apt list
 abbr -a aplsi sudo apt list --installed
 abbr -a apr sudo apt-get remove
 
-# misc
-alias open='xdg-open'
