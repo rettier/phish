@@ -38,6 +38,7 @@ alias kname='kubectl config set-context (kubectl config current-context) --names
 abbr -a kaf kubectl apply -f
 abbr -a k   kubectl
 abbr -a kdp   kubectl delete pod
+abbr -a kgp   kubectl get pods
 
 # add os depending alias file
 switch (uname)
