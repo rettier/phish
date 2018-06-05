@@ -9,6 +9,7 @@ alias pubip='curl ipecho.net/plain; and echo'
 alias htf='fish_logo; and echo "       All hail the Fish"'
 alias make="make -j(nproc --all)"
 abbr -a unixc unix \(c\)
+abbr -a ssh-agent eval \(ssh-agent -c\)
 
 # git
 abbr -a gau git add -u
