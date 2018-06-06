@@ -1,8 +1,8 @@
-function zopen
+function zopen --description 'Opens recent folder with z macro'
     open (z -e $argv)
 end
 
-function unix
+function unix --description 'Converts unix timestamp to human readable datetime'
     date -d @(echo "$argv" | cut -d"." -f1)
 end
 
