@@ -13,6 +13,7 @@ abbr -a ssh-agent eval \(ssh-agent -c\)
 
 # git
 abbr -a gau git add -u
+abbr -a glne git pull --no-edit
 alias gpristine='git reset --hard; and git clean -dfx'
 
 # docker
