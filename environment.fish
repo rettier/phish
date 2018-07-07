@@ -5,6 +5,7 @@ set -g theme_nerd_fonts yes
 # virtualfish settings
 set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 set -g VIRTUALFISH_PLUGINS "auto_activation compat_aliases"
+set -g VIRTUALFISH_PYTHON "/usr/bin/python" # so vf does not fallback to the virtual env's python
 set -g VIRTUALFISH_HOME "$HOME/.virtualenvs"
 set -x TERM "xterm-256color"
 
