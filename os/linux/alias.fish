@@ -1,3 +1,5 @@
+alias cat=/usr/bin/ccat
+
 # apt-get 
 abbr -a apt sudo apt
 abbr -a apt-get sudo apt-get
