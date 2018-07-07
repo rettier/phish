@@ -1,8 +1,11 @@
 # fzf integration by https://github.com/fisherman/fzf
 
-set -q FZF_TMUX_HEIGHT; or set -U FZF_TMUX_HEIGHT "40%"
-set -q FZF_DEFAULT_OPTS; or set -U FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT"
-set -q FZF_LEGACY_KEYBINDINGS; or set -U FZF_LEGACY_KEYBINDINGS 0
+set -e FZF_COMPLETE 
+set -g FZF_TMUX_HEIGHT "70%"
+set -g FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT"
+set -g FZF_LEGACY_KEYBINDINGS 0
+set -g FZF_OPEN_OPTS "--preview 'file --mime {} | string match \'*binary*\' >/dev/null ; and echo \"\" ; or head -n100 {} 2>/dev/null | /usr/bin/ccat --color=always'"
+set -g FZF_FIND_FILE_OPTS "--preview 'file --mime {} | string match \'*binary*\' >/dev/null ; and echo \"\" ; or head -n100 {} 2>/dev/null | /usr/bin/ccat --color=always'"
 
 function __fzf_cd -d "Change directory"
     set -l commandline (__fzf_parse_commandline)
