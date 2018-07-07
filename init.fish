@@ -8,3 +8,5 @@
 source $path/alias.fish
 source $path/environment.fish
 source $path/functions.fish
+source $path/fzf.fish
+source $path/bindings.fish

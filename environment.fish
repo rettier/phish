@@ -8,6 +8,8 @@ set -g VIRTUALFISH_PLUGINS "auto_activation compat_aliases"
 set -g VIRTUALFISH_HOME "$HOME/.virtualenvs"
 set -x TERM "xterm-256color"
 
+# common settings
+set -g EDITOR vim
 
 switch (uname)
 case Darwin
