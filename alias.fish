@@ -2,7 +2,6 @@ alias ..='cd ..'
 alias ccd='builtin cd'
 alias mkdir='mkdir -p'
 abbr -a nano vim
-alias cat='/usr/bin/ccat'
 alias ccat='command cat'
 alias meh='echo "¯\\_(ツ)_/¯"'
 alias pubip='curl ipecho.net/plain; and echo'
@@ -10,6 +9,7 @@ alias htf='fish_logo; and echo "       All hail the Fish"'
 alias make="make -j(nproc --all)"
 abbr -a unixc unix \(c\)
 abbr -a ssh-agent eval \(ssh-agent -c\)
+abbr -a le load-env
 
 # git
 abbr -a gau git add -u

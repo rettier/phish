@@ -1,5 +1,5 @@
 function c --description 'Copies or paste content from clipboard'
-	if test -t 0
+	if tty > /dev/null
 		pbpaste
 	else
 		pbcopy
@@ -7,7 +7,7 @@ function c --description 'Copies or paste content from clipboard'
 end
 
 function cc --description 'Copies and/or paste clipboard content to shell'
-	if test -t 0
+	if tty > /dev/null
 		pbpaste
 	else
 		pbcopy & pbpaste
