@@ -10,6 +10,7 @@ alias make="make -j(nproc --all)"
 abbr -a unixc unix \(c\)
 abbr -a ssh-agent eval \(ssh-agent -c\)
 abbr -a le load-env
+abbr -a cdc cd \(c\)
 
 # git
 abbr -a gau git add -u
