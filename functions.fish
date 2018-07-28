@@ -45,7 +45,6 @@ end
 
 
 function tmx --description 'Creates/Resurrects tmux sessions'
-  deactivate >/dev/null 2>&1
 	# take over given arg or default back to main session
 	set argc (count $argv)
 	if test $argc -eq 0
