@@ -22,6 +22,10 @@ function zz --description 'search through and cd into z history with fzf'
     end
 end
 
+function zg --description 'search through git history'
+    git log --color=always --graph --oneline --decorate --all | fzf --ansi --preview "git show --color=always {2}"
+end
+
 # helper methods, cause we don't like conditional statements
 function on-error
 	set res $status
