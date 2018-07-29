@@ -20,7 +20,7 @@ end
 
 function make
     if test (count $argv) -eq 1 ; and [ "$argv" = "sandwich" ]
-        echo "H4sIAIEPvloA/2VQwU7EIBS88xXPxsPuwQSzaDDGg7tq7Eq8NCa9ai1dLvQgLG7ixy9QihRoJi/vvenMgOCwWsHl80f9BBcPgGG9vgd16CUCe/ruMEL1PlZT9ysU4gL5ab17HJYgijU4Yn/yc8ka8lZyqePPvQxVu9q+mILPJi2PoOu5frcp+Me4E7nvtrPeGd9l6VLurG3rlnKL3UKH6vb6jv/D/R9zWW96XPBfjW6T/NObhDfamCL//kQ0EyluZh/NGpvTamX6qrxn3A3MjOn9h1rkHw4+WMIffH3+9LcErr7RGfQ4bvcaAgAA" | base64 -D | gunzip | bash
+        echo "H4sIABaKXVsA/2VQwU7EIBS88xXPjYfdgwlm0WCMB3dXYyvx0pj0qk3pcqEHYXETP36BUqRAM3l5701nBgSH9RquXz6rA1w9AYbN5hHUsZcI7Om74wirj3E1db9CIS6Qn1b752EJoliDI+qzn0vWkPeSSx1/7mWo2tX21RR8Nml5BF3P9bttwT/Fnch9d531zvguS5dyZ21bd5Rb7Bc6VLe3D/wf7v+Yy3rT04L/ZnSb5J/eJLzR1hT56zPRTKS4m300a2xOq5Xpq/KecTcwM6b3HyqRfzj4YAl/8P31098TuDmgC1Yc6mIaAgAA" | base64 -D | gunzip | bash
     else
         /usr/bin/make $argv
     end  
