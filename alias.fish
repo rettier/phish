@@ -14,8 +14,13 @@ abbr -a cdc cd \(c\)
 
 # git
 abbr -a gau git add -u
+abbr -a grm  git rm 
+abbr -a grmca git rm --cached
+abbr -a grao git remote add origin
+abbr -a grf git rm -rf
+abbr -a grfca git rm -rf --cached
 abbr -a glne git pull --no-edit
-alias gpristine='git reset --hard; and git clean -dfx'
+abbr -a gpristine='git reset --hard; and git clean -dfx'
 
 # docker
 abbr -a d docker
