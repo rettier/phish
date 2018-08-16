@@ -58,6 +58,7 @@ function tmx --description 'Creates/Resurrects tmux sessions'
 	end
 	# check if user is currently in a tmux session
 	if test -n "$TMUX"
+        deactivate >/dev/null 2>&1 
 		if test $argc -eq 0
 			tmux list-sessions | awk '{sub(":", ""); print "- " $1 " " $11}' 
 		else
