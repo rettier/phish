@@ -9,6 +9,11 @@ function zopen --description 'Opens recent folder with z macro'
     open (z -e $argv)
 end
 
+function shoot --description "fucking ignore ssh hosts file"
+	ssh-keygen -f "~/.ssh/known_hosts" -R '[shootback.acc.si]':$argv[1] >/dev/null 2>&1
+        ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv shootback.acc.si
+end
+
 function unix --description 'Converts unix timestamp to human readable datetime'
     date -d @(echo "$argv" | cut -d"." -f1)
 end
