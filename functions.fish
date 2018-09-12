@@ -32,6 +32,10 @@ function zz --description 'search through and cd into z history with fzf'
     end
 end
 
+function ww --description 'search through and activate desktop windows'
+    wmctrl -ia (wmctrl -l | tr -s " " | fzf --with-nth=4.. | cut -d" " -f1)
+end
+
 function zg --description 'search through git history'
     git log --color=always --graph --oneline --decorate --all | fzf --ansi --preview "git show --color=always {2}"
 end
