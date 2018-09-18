@@ -11,7 +11,7 @@ end
 
 function shoot --description "fucking ignore ssh hosts file"
 	ssh-keygen -f "~/.ssh/known_hosts" -R '[shootback.acc.si]':$argv[1] >/dev/null 2>&1
-    ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv shootback.acc.si
+    ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv[1] shootback.acc.si $argv[2..-1]
 end
 
 function shootcp --description "scp without host check"
