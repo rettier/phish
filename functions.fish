@@ -10,8 +10,13 @@ function zopen --description 'Opens recent folder with z macro'
 end
 
 function shoot --description "fucking ignore ssh hosts file"
-	ssh-keygen -f "~/.ssh/known_hosts" -R '[shootback.acc.si]':$argv[1] >/dev/null 2>&1
-    ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv[1] shootback.acc.si $argv[2..-1]
+    ssh-keygen -f "~/.ssh/known_hosts" -R '[shootback.acc.si]':$argv[1] >/dev/null 2>&1
+    if test (count $argv) -gt 2
+      set runarg $argv[2..-1]
+    else
+      set runarg ""
+    end
+    ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv[1] shootback.acc.si $runarg
 end
 
 function shootcp --description "scp without host check"
@@ -70,7 +75,8 @@ function tmx --description 'Creates/Resurrects tmux sessions'
 	else
 		set session $argv[1]
 	end
-	# check if user is currently in a tmux session
+        
+        # check if user is currently in a tmux session
 	if test -n "$TMUX"
         deactivate >/dev/null 2>&1 
 		if test $argc -eq 0
