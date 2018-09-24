@@ -83,6 +83,16 @@ function tmx --description 'Creates/Resurrects tmux sessions'
 	end
 end
 
+
+function cb --description 'Copies basename to clipboard'
+    basename $argv | cc
+end
+
+function cbd --description 'Copies basename of current directory to clipboard'
+    cb $PWD
+end
+
+
 switch (uname)
 case Darwin
 	source $path/os/osx/functions.fish
