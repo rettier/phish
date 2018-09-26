@@ -45,6 +45,14 @@ function zg --description 'search through git history'
     git log --color=always --graph --oneline --decorate --all | fzf --ansi --preview "git show --color=always {2}"
 end
 
+function gogit --description 'zcd to the directory and open the git remote in the browser'
+	pushd .
+	z $argv
+	open (git remote get-url (git remote | head -n1) | sed -r 's/git@(.*):(.*)\.git/https:\/\/\1\/\2/g') 2>&1 >/dev/null
+	popd
+end
+
+
 # helper methods, cause we don't like conditional statements
 function on-error
 	set res $status
