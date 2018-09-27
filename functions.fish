@@ -103,7 +103,7 @@ end
 
 
 function cb --description 'Copies basename to clipboard'
-    basename $argv | cc
+    basename (readlink -e $argv) | cc
 end
 
 function cbd --description 'Copies basename of current directory to clipboard'
