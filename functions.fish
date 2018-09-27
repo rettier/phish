@@ -10,8 +10,13 @@ function zopen --description 'Opens recent folder with z macro'
 end
 
 function shoot --description "fucking ignore ssh hosts file"
-	ssh-keygen -f "~/.ssh/known_hosts" -R '[shootback.acc.si]':$argv[1] >/dev/null 2>&1
-    ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv shootback.acc.si
+    ssh-keygen -f "~/.ssh/known_hosts" -R '[shootback.acc.si]':$argv[1] >/dev/null 2>&1
+    if test (count $argv) -gt 2
+      set runarg $argv[2..-1]
+    else
+      set runarg ""
+    end
+    ssh -lalpr -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $argv[1] shootback.acc.si $runarg
 end
 
 function shootcp --description "scp without host check"
@@ -32,9 +37,21 @@ function zz --description 'search through and cd into z history with fzf'
     end
 end
 
+function ww --description 'search through and activate desktop windows'
+    wmctrl -ia (wmctrl -l | tr -s " " | fzf --with-nth=4.. | cut -d" " -f1)
+end
+
 function zg --description 'search through git history'
     git log --color=always --graph --oneline --decorate --all | fzf --ansi --preview "git show --color=always {2}"
 end
+
+function gogit --description 'zcd to the directory and open the git remote in the browser'
+	pushd .
+	z $argv
+	open (git remote get-url (git remote | head -n1) | sed -r 's/git@(.*):(.*)\.git/https:\/\/\1\/\2/g') 2>&1 >/dev/null
+	popd
+end
+
 
 # helper methods, cause we don't like conditional statements
 function on-error
@@ -66,7 +83,8 @@ function tmx --description 'Creates/Resurrects tmux sessions'
 	else
 		set session $argv[1]
 	end
-	# check if user is currently in a tmux session
+        
+        # check if user is currently in a tmux session
 	if test -n "$TMUX"
         deactivate >/dev/null 2>&1 
 		if test $argc -eq 0

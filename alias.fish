@@ -21,6 +21,12 @@ abbr -a grf git rm -rf
 abbr -a grfca git rm -rf --cached
 abbr -a glne git pull --no-edit
 abbr -a gpristine='git reset --hard; and git clean -dfx'
+abbr -a gg gogit
+
+# python
+abbr -a pi pip install 
+abbr -a pir pip install -r 
+abbr -a pirr pip install -r requirements.txt
 
 # docker
 abbr -a d docker
