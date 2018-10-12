@@ -10,6 +10,7 @@ set -x TERM "xterm-256color"
 
 # common settings
 set -g EDITOR vim
+set -gx PATH $path/bin $PATH
 
 switch (uname)
 case Darwin
