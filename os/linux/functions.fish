@@ -1,4 +1,9 @@
 function c --description 'Copies or paste content from clipboard'
+        if test (count $argv) -eq 1
+                cremote $argv <&0
+                return
+        end
+
 	if tty > /dev/null
 		xclip -selection clipboard -o
 	else
