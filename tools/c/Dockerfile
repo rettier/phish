@@ -8,7 +8,7 @@ ARG GIT_BRANCH=dev
 ARG VERSION=dev
 
 # install base requirements
-RUN pip install --no-cache-dir flask environs redis
+RUN pip install --no-cache-dir flask environs redis gunicorn
 
 ADD app.py /
-CMD ["python", "/app.py"]
+CMD ["gunicorn", "app:app"]
