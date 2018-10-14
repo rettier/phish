@@ -10,7 +10,13 @@ storage_backend = env("STORAGE_BACKEND", "disk")
 data_dir = env("DATA_DIR", "./data")
 empty_gzip = "H4sIAFCsw1sAAwMAAAAAAAAAAAA="
 
-os.makedirs(data_dir, exist_ok=True)
+fullpath = "/"
+for x in os.path.abspath(data_dir).split("/"):
+  fullpath = os.path.join(fullpath, x)
+  try:
+    os.mkdir(fullpath)
+  except:
+    pass
 
 
 def key():

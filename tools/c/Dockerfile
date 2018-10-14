@@ -1,4 +1,4 @@
-FROM d.acc.si/python:2.7-alpine
+FROM python:2.7-alpine
 
 # build args
 ARG OMVERSION=
