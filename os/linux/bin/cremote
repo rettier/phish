@@ -1,7 +1,7 @@
 #!/bin/bash
 tty > /dev/null
 if [[ $? -eq 0 ]] ; then
-	OUTPUT=$(curl -H 'Authorization: 12345678af' "https://c.acc.si/?c=$1" -XGET -s)
+	OUTPUT=$(curl -H 'Authorization: 12345678af' "http://10.15.0.134/?c=$1" -XGET -s)
 	if [[ $? -ne 0 ]] ; then
 		echo "error getting from remote"
 		exit 1
@@ -11,7 +11,7 @@ if [[ $? -eq 0 ]] ; then
 	fi
 	echo -n $OUTPUT
 else
-        curl -H 'Authorization: 12345678af' -H 'Content-Type: text' "https://c.acc.si/?c=$1" -XPOST -d @- -s <&0
+    curl -H 'Authorization: 12345678af' -H 'Content-Type: text' "http://10.15.0.134/?c=$1" -XPOST -d @- -s <&0
 	if [[ $? -ne 0 ]] ; then
 	      echo "error saving to remote"
 	      exit 1
