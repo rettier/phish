@@ -79,8 +79,9 @@ else:
         with open(actual_path, "rb") as f:
             return f.read()
 
-app.run(
-    host=env("HOST", "localhost"),
-    port=env.int("PORT", 8099),
-    debug=env.bool("DEBUG", False)
-)
+if __name__ == "__main__":
+    app.run(
+        host=env("HOST", "localhost"),
+        port=env.int("PORT", 8099),
+        debug=env.bool("DEBUG", False)
+    )
