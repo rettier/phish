@@ -5,6 +5,10 @@ function load-env --description "load docker env file"
     end
 end
 
+function htb --description "hex to binary"
+    perl -pe 's/([0-9a-f]{2})/chr hex $1/gie' <&0
+end
+
 function zopen --description 'Opens recent folder with z macro'
     open (z -e $argv)
 end
@@ -85,6 +89,24 @@ function tmx --description 'Creates/Resurrects tmux sessions'
 		on-success tmux attach -t $session 
 	end
 end
+
+
+function cb --description 'Copies basename to clipboard'
+    basename (readlink -e $argv) | cc
+end
+
+function cbd --description 'Copies basename of current directory to clipboard'
+    cb $PWD
+end
+
+function ipy --description 'Start ipython with current venv'
+	python -c "import IPython;" >/dev/null 2>&1
+	if test $status -ne 0
+		pip install ipython
+	end
+	python -c "import IPython; IPython.terminal.ipapp.launch_new_instance()"
+end
+
 
 switch (uname)
 case Darwin

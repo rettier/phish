@@ -10,10 +10,13 @@ set -x TERM "xterm-256color"
 
 # common settings
 set -g EDITOR vim
+set -gx PATH $path/bin $PATH
 
 switch (uname)
 case Darwin
 	source $path/os/osx/environment.fish
+    set -gx PATH $path/os/osx/bin $PATH
 case '*'
 	source $path/os/linux/environment.fish
+    set -gx PATH $path/os/linux/bin $PATH
 end

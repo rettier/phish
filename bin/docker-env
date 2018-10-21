@@ -1,0 +1,59 @@
+#!/bin/sh
+
+set +e
+
+DOCKER_ENV_DIR="$HOME/.docker-env"
+GOSU_VERSION="1.10"
+
+if [ -f "/.dockerenv" ]; then
+	# running inside of docker container
+	shells="/bin/bash /bin/ash /bin/sh"
+	for s in $shells; do
+		if [ -x "$s" ]; then VSHELL="$s"; break; fi
+	done
+	if [ -z "$VSHELL" ]; then echo "No shell found in docker image - stopping here"; exit 1; fi
+
+	echo "root:root" | chpasswd 2>/dev/null
+	echo "${VUNAME}:x:${VUID}:${VGID}:docker:/home:${VSHELL}" >> /etc/passwd
+	echo "${VGNAME}:x:${VGID}:" >> /etc/group
+	TMP_UID=${VUID}
+	unset VUID VGID VUNAME VGNAME
+	export PS1='\u@\h:\w$ '
+	chmod +x /bin/gosu
+	echo ""
+	echo "To gain root access type \"su\". Password: root"
+	echo ""
+	exec /bin/gosu ${TMP_UID} ${VSHELL}
+else
+	# running outside of docker container
+	if [ -z $1 ]; then
+		echo "$0 docker-image-name:tag"
+		exit 1
+	fi
+	for cmd in "docker" "wget" "awk"; do
+		if [ ! -x "$(command -v "${cmd}")" ]; then
+			echo "Error: ${cmd} is not installed." >&2
+			exit 1
+		fi
+	done
+	if [ ! -d "${DOCKER_ENV_DIR}" ]; then
+		echo "Creating ${DOCKER_ENV_DIR} directory"
+		mkdir -p "${DOCKER_ENV_DIR}"
+	fi
+	if [ ! -f "${DOCKER_ENV_DIR}/gosu" ]; then
+		echo "Downloading gosu ${GOSU_VERSION}"
+		wget "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64" -O "${DOCKER_ENV_DIR}/gosu" 2>/dev/null
+	fi
+	DOCKER_IMAGE=$(echo "${1}" | awk -F: '{print $1}' | LC_ALL=C sed "s/[^0-9a-zA-Z]/-/g")
+	docker run -it --rm \
+		-v $(pwd):/data \
+		-v $(realpath $0):/entrypoint:ro \
+		-v $(readlink -f "${DOCKER_ENV_DIR}/gosu"):/bin/gosu \
+		--entrypoint=/entrypoint \
+		--workdir=/data \
+		-e VUID=$(id -u) \
+		-e VGID=$(id -g) \
+		-e VUNAME=$(id -un) \
+		-e VGNAME=$(id -gn) \
+		--hostname="docker-${DOCKER_IMAGE}" $1
+fi
