@@ -1,4 +1,5 @@
 alias cat=/usr/bin/ccat
+alias open=xdg-open
 
 # apt-get 
 abbr -a apt sudo apt
