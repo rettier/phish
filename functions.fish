@@ -14,7 +14,7 @@ function zopen --description 'Opens recent folder with z macro'
 end
 
 function unix --description 'Converts unix timestamp to human readable datetime'
-    date -d @(echo "$argv" | cut -d"." -f1)
+    date -d @(echo "$argv" | grep -oP '(\d{10})' | head -n1)
 end
 
 function zz --description 'search through and cd into z history with fzf'
