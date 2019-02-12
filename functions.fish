@@ -43,10 +43,17 @@ function zg --description 'search through git history'
 end
 
 function gogit --description 'zcd to the directory and open the git remote in the browser'
-	pushd .
-	z $argv
+	set argc (count $argv)
+	if test $argc -gt 0 
+        pushd .
+        z $argv
+    end
+
 	open (git remote get-url (git remote | head -n1) | sed -r 's/git@(.*):(.*)\.git/https:\/\/\1\/\2/g') 2>&1 >/dev/null
-	popd
+
+	if test $argc -gt 0 
+        popd
+    end
 end
 
 
