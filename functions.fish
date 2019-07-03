@@ -1,6 +1,6 @@
 function make
     if test (count $argv) -eq 1 ; and [ "$argv" = "sandwich" ]
-        echo "H4sIABaKXVsA/2VQwU7EIBS88xXPjYfdgwlm0WCMB3dXYyvx0pj0qk3pcqEHYXETP36BUqRAM3l5701nBgSH9RquXz6rA1w9AYbN5hHUsZcI7Om74wirj3E1db9CIS6Qn1b752EJoliDI+qzn0vWkPeSSx1/7mWo2tX21RR8Nml5BF3P9bttwT/Fnch9d531zvguS5dyZ21bd5Rb7Bc6VLe3D/wf7v+Yy3rT04L/ZnSb5J/eJLzR1hT56zPRTKS4m300a2xOq5Xpq/KecTcwM6b3HyqRfzj4YAl/8P31098TuDmgC1Yc6mIaAgAA" | base64 --decode | gunzip | bash
+        echo "H4sIAOnYHF0A/2VQTU8DIRS88yuejYf20ARTNBjjwVaNW4mXjclelcKWCxyEYhN/fIH9cBfYTF7ee7MzA0rCcgnXL5/VM1w9AobV6gHsUWgE4Qh+NLD4MIuu+1UWSYXStNo9tXMQy2o8Yn9Oc81q8l5yaeQPve6ri7V59QWfdVoJvW7ipt2m4J/Gncp9tzx4Z/yYhU+5g3aoWyoDdjMd6pqbe/mP+P+YK3jT04z/5l0zyd+9Sf9GG1/k35+JY2qK28HHsTrkDFqZvi3vOe5a5s30/m2l8g/3PljDH3x//Yg7Auv1QXBzEOgC0WPWeiACAAA=" | base64 --decode | gunzip | bash
     else
         eval (which make) $argv
     end  
