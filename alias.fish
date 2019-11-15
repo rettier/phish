@@ -57,6 +57,8 @@ abbr -a k   kubectl
 abbr -a kdp   kubectl delete pod
 abbr -a kgp   kubectl get pods
 
+abbr -a r redis-cli
+
 # add os depending alias file
 switch (uname)
 case Darwin
