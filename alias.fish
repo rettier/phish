@@ -22,9 +22,9 @@ abbr -a grao git remote add origin
 abbr -a grf git rm -rf
 abbr -a grfca git rm -rf --cached
 abbr -a glne git pull --no-edit
-abbr -a gpristine='git reset --hard; and git clean -dfx'
+abbr -a gpristine 'git reset --hard; and git clean -dfx'
 abbr -a gg gogit
-abbr -a gunpushed='git log --branches --not --remotes --simplify-by-decoration --decorate --oneline'
+abbr -a gunpushed 'git log --branches --not --remotes --simplify-by-decoration --decorate --oneline'
 
 # python
 abbr -a pi pip install 
