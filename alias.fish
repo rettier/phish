@@ -31,6 +31,14 @@ abbr -a pi pip install
 abbr -a pir pip install -r 
 abbr -a pirr pip install -r requirements.txt
 
+# django
+abbr -a pm python manage.py
+abbr -a pmm python manage.py migrate 
+abbr -a pmmk python manage.py makemigrations
+abbr -a pmdd python manage.py devdata
+abbr -a pmsp python manage.py shell_plus
+abbr -a pms python manage.py shell
+
 # docker
 abbr -a d docker
 abbr -a dc docker-compose
