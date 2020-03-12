@@ -78,7 +78,6 @@ function __tmux_has_session
  	tmux has-session -t $argv[1] ^ /dev/null
 end
 
-
 function tmx --description 'Creates/Resurrects tmux sessions'
 	# take over given arg or default back to main session
 	set argc (count $argv)
@@ -105,7 +104,6 @@ function tmx --description 'Creates/Resurrects tmux sessions'
 	end
 end
 
-
 function cb --description 'Copies basename to clipboard'
     basename (readlink -e $argv) | cc
 end
@@ -122,16 +120,20 @@ function ipy --description 'Start ipython with current venv'
 	python -c "import IPython; IPython.terminal.ipapp.launch_new_instance()"
 end
 
-
-switch (uname)
-case Darwin
-	source $path/os/osx/functions.fish
-case '*'
-	source $path/os/linux/functions.fish
+function rc --description "clear redis keys with pattern"
+  redis-cli --scan --pattern $argv[1] | xargs redis-cli del
 end
 
 function docker-copy --description "copy images from one repo/tag to another repo/tag"
   docker pull $argv[1]
   docker tag $argv[1] $argv[2]
   docker push $argv[2]
+end
+
+
+switch (uname)
+case Darwin
+	source $path/os/osx/functions.fish
+case '*'
+	source $path/os/linux/functions.fish
 end
