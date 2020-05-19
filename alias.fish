@@ -42,6 +42,9 @@ abbr -a pms python manage.py shell
 
 # docker
 abbr -a d docker
+abbr -a deit docker exec -it 
+abbr -a di docker inspect
+abbr -a dk docker kill
 abbr -a dc docker-compose
 abbr -a dcud docker-compose up -d
 
