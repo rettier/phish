@@ -39,7 +39,7 @@ function ww --description 'search through and activate desktop windows'
 end
 
 function zg --description 'search through git history'
-    git log --color=always --graph --oneline --decorate --all | fzf --ansi --preview "git show --color=always {2}"
+    git log --color=always --graph --oneline --decorate --all | fzf --ansi --preview "echo {} | grep -Eow '[a-z0-9A-Z]+' | head -n1 | xargs git show --color=always" | grep -Eow '[a-z0-9A-Z]+' | head -n1
 end
 
 function gogit --description 'zcd to the directory and open the git remote in the browser'
