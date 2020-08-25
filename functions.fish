@@ -49,7 +49,7 @@ function gogit --description 'zcd to the directory and open the git remote in th
         z $argv
     end
 
-	open (git remote get-url (git remote | head -n1) | sed -r 's/git@(.*):([^\.]*)(\.git)?/https:\/\/\1\/\2/g') 2>&1 >/dev/null
+	open (git remote get-url (git remote | head -n1) | sed -r 's/git@(.*):([^\.]*)(\.git)?/https:\/\/\1\/\2/g') >/dev/null 2>&1 
 
 	if test $argc -gt 0 
         popd
