@@ -25,7 +25,7 @@ createmenu ()
 
 createmenu "${interfaces[@]}"
 default_vlans=(2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
-vlans="${@:1}"
+vlans=( "${@:1}" )
 vlans=( "${vlans[@]:-"${default_vlans[@]}"}" )
 sudo modprobe 8021q
 
