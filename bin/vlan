@@ -3,8 +3,11 @@
 interfaces=($(ip a | grep -i mtu | cut -d":" -f2 | tr -d " " | grep -i "en[xp]" | grep -v "@"))
 createmenu ()
 {
-  echo "Size of array: $#"
-  echo "$@"
+  if [ 1 -eq "$#" ] ; then
+    interface=$1 
+    return
+  fi
+  echo "Please select a interface:"
   select option; do # in "$@" is the default
     if [ "$REPLY" -eq "$(($#+1))" ];
     then
