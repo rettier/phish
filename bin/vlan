@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+interfaces=($(ip a | grep -i mtu | cut -d":" -f2 | tr -d " " | grep -i "en[xp]" | grep -v "@"))
+createmenu ()
+{
+  echo "Size of array: $#"
+  echo "$@"
+  select option; do # in "$@" is the default
+    if [ "$REPLY" -eq "$(($#+1))" ];
+    then
+      echo "Exiting..."
+      exit 1;
+    elif [ 1 -le "$REPLY" ] && [ "$REPLY" -le $(($#)) ];
+    then
+      interface=$option
+      break;
+    else
+      echo "Incorrect Input: Select a number 1-$#"
+    fi
+  done
+}
+
+createmenu "${interfaces[@]}"
+default_vlans=(2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
+vlans="${@:1}"
+vlans=( "${vlans[@]:-"${default_vlans[@]}"}" )
+sudo modprobe 8021q
+
+sudo pkill dhclient
+existing_vlans=($(ip a | grep -i mtu | cut -d":" -f2 | tr -d " " | grep -i "vlan" | grep "@" | cut -d"@" -f1))
+for vlan in "${existing_vlans[@]}"
+do
+  sudo ip link delete $vlan
+done
+
+for vlan in "${vlans[@]}" 
+do
+  sudo ip link add link ${interface} name vlan.${vlan} type vlan id ${vlan} >/dev/null 2>&1
+  sudo dhclient vlan.${vlan} >/dev/null 2>&1 &
+done
